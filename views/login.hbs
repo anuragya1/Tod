@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/landlogreg.css">
+</head>
+<body>
+    <main>
+        <h1>Login</h1>
+        
+        <!-- Regular Login Form -->
+        <form action="/login" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <!-- GitHub Login Button -->
+        <div class="github-login">
+            <a href="/auth/github">
+                <button type="button" class="github-btn">
+                    <i class="fa fa-github"></i> Login with GitHub
+                </button>
+            </a>
+        </div>
+
+    </main>
+</body>
+</html>

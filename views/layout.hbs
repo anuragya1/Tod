@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{> head}}
+
+<body>
+    <div class="app-background">
+        <div class="todo-container">
+            <div class="todo-header">
+                <h2>TODO LIST</h2>
+            </div>
+            <div class="todo-list-background">
+                <form class="todo-add-form" action="/add" method="POST">
+                    <input type="text" name="content" placeholder="Enter new todo here">
+                     <label for="priority">Priority:</label>
+  <select name="priority" id="priority">
+    <option value="Low">Low</option>
+    <option value="Medium" selected>Medium</option>
+    <option value="High">High</option>
+  </select> 
+                    <button type="submit">Add</button>
+                </form>
+                <ul class="todo-list-item">
+                    {{{body}}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+{{> footer}}
+
+</html>

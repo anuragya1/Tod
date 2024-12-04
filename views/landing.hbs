@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="/css/landlogreg.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Todo App!</h1>
+        <nav>
+            <a href="/signup">Signup</a>
+            <a href="/login">Login</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Public Todos</h2>
+        <ul>
+            {{#each todos}}
+                <li>{{this.content}}</li>
+            {{/each}}
+        </ul>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Todo App</p>
+    </footer>
+</body>
+</html>

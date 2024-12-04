@@ -1,0 +1,31 @@
+<h1>Welcome, {{user.username}}</h1>
+
+<!-- Filter tasks by priority -->
+<form action="/dashboard" method="GET">
+  <label for="priorityFilter">Filter by Priority:</label>
+  <select name="priority" id="priorityFilter">
+    <option value="All" {{#if (eq priority "All")}}selected{{/if}}>All</option>
+    <option value="Low" {{#if (eq priority "Low")}}selected{{/if}}>Low</option>
+    <option value="Medium" {{#if (eq priority "Medium")}}selected{{/if}}>Medium</option>
+    <option value="High" {{#if (eq priority "High")}}selected{{/if}}>High</option>
+  </select>
+  <button type="submit">Apply Filter</button>
+</form>
+
+<!-- Display Todo Tasks -->
+<ul class="todo-list">
+  {{#each todoTasks}}
+    <li>
+      <div>
+        <strong>{{content}}</strong>
+        <p>Priority: <span class="priority">{{priority}}</span></p>
+      </div>
+      <a href="/edit/{{_id}}" class="edit-btn">
+        <i class="fa-solid fa-pen-to-square"></i>
+      </a>
+      <a href="/remove/{{_id}}" class="remove">
+        <i class="fa-solid fa-trash-can"></i>
+      </a>
+    </li>
+  {{/each}}
+</ul>
