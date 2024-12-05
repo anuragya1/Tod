@@ -65,9 +65,23 @@ passport.use(new GitHubStrategy(
       if (existingUser) {
         return done(null, existingUser);
       } 
-            console.log("profile details = "+profile.emails?.[0]?.value)
- const email = profile.emails?.[0]?.value;
+             let email = profile.emails?.[0]?.value;
 
+        // If email is undefined, fetch it using the accessToken
+        if (!email) {
+          const response = await axios.get("https://api.github.com/user/emails", {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+              Accept: "application/vnd.github.v3+json",
+            },
+          });
+
+          const emails = response.data;
+          if (emails && emails.length > 0) {
+            // Find the primary and verified email
+            email = emails.find((e) => e.primary && e.verified)?.email || emails[0].email;
+          }
+        }
       
       const newUser = new User({
         githubId: profile.id,
