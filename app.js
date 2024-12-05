@@ -65,7 +65,7 @@ passport.use(new GitHubStrategy(
       if (existingUser) {
         return done(null, existingUser);
       } 
-            console.log("profile details = "+profile.email)
+            console.log("profile details = "+profile.emails?.[0]?.value)
  const email = profile.emails?.[0]?.value;
 
       
