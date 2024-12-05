@@ -56,7 +56,8 @@ passport.use(new GitHubStrategy(
   {
     clientID: process.env.GITHUB_CLIENT_ID ,
     clientSecret: process.env.GITHUB_CLIENT_SECRET, 
-     callbackURL:"https://tod-tv9i.onrender.com/auth/github/callback"
+     callbackURL:"https://tod-tv9i.onrender.com/auth/github/callback",
+     scope: ["user:email"]
   },
   async (accessToken, refreshToken, profile, done) => {
     try {
@@ -65,7 +66,7 @@ passport.use(new GitHubStrategy(
         return done(null, existingUser);
       } 
             console.log("profile details = "+profile.email)
-      const email = profile.email;
+ const email = profile.emails?.[0]?.value;
 
       
       const newUser = new User({
