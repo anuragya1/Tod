@@ -63,7 +63,8 @@ passport.use(new GitHubStrategy(
       const existingUser = await User.findOne({ githubId: profile.id });
       if (existingUser) {
         return done(null, existingUser);
-      }
+      } 
+            console.log("profile details = "+profile)
       const email = profile.emails;
 
       
